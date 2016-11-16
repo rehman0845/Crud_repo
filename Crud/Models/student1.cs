@@ -13,10 +13,10 @@ namespace Crud.Models
     {
         [Required]
         public int sno { get; set; }
-        [Required,Range(1,30)]
+        [Required]
         [RegularExpression(@"^[a-zA-z]+$",ErrorMessage="AlphabitsOnly")]
         public string sname { get; set; }
-        [Required, Range(1, 10)]
+        [Required]
         public string course { get; set; }
         [Required]
         public double fee { get; set; }

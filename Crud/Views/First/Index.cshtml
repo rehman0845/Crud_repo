@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<Crud.Models.Student>
 
 @{
-    ViewBag.Title = "Show";
+    ViewBag.Title = "Index";
 }
 
-<h2>Show</h2>
+<h2>Index</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -49,6 +49,34 @@
 }
 
 </table>
+
 <div>
-    @Html.ActionLink("Home", "Index", "Crud1")
+    <form>
+        @Html.TextBox("sno", "", new{ placeholder="sno"})<br/>
+        @Html.TextBox("sname", "", new { placeholder = "sname" })<br />
+        @Html.TextBox("course", "", new { placeholder = "course" })<br />
+        @Html.TextBox("fee", "", new { placeholder = "fee" })<br />
+    </form>
 </div>
+<input type="button" id="create" value="create">
+
+<script>
+    $(document).ready(function () {
+        $("#create").click(function () {
+            var data = {
+                sno: document.getElementById("sno").value,
+                sname: document.getElementById("sname").value,
+                course: document.getElementById("course").value,
+                fee: document.getElementById("fee").value,
+            };
+            console.log(data)
+            $.ajax("http://localhost:2553/First/create", {
+                method: "POST",
+                data: data,
+                sucess: function (response) {
+                   console.log(response);
+                }
+            });
+        })
+    })
+</script>
